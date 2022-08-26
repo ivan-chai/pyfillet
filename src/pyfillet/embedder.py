@@ -32,6 +32,18 @@ class WordEmbedder:
         }
     }
 
+    POS_MAP = {
+        "ADJF": "ADJ",
+        "ADJS": "ADJ",
+        "ADVB": "ADV",
+        "COMP": "ADV",
+        "GRND": "VERB",
+        "INFN": "VERB",
+        "PRED": "ADV",
+        "PRTF": "ADJ",
+        "PRTS": "VERB"
+    }
+
     def __init__(self, model="rusvectores-180", root=None, download=True):
         if root is None:
             cache = os.path.expanduser(os.path.join("~", ".cache"))
@@ -80,8 +92,9 @@ class WordEmbedder:
         pos = parse_result.tag.POS
         if pos is None:
             return
+        pos = self.POS_MAP.get(pos, pos)
         lemma = parse_result.normal_form
-        for token in [word + "_" + pos, lemma + "_" + pos]:
+        for token in [word + "_" + pos, lemma + "_" + pos, word + "_" + "PROPN", lemma + "_" + "PROPN"]:
             index = self._model.key_to_index.get(token)
             if index is not None:
                 break
