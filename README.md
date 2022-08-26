@@ -10,7 +10,7 @@ The name of the pacckage refers to picture framing. According to Wikipedia:
 > A *fillet* (also referred to as a slip) is a small piece of moulding which fits inside a larger frame or, typically, underneath or in between matting, used for decorative purposes.
 
 Example code:
-```{python}
+```python
 from pyfillet import TextEmbedder
 
 text = "Мама мыла раму. Папа сажал забор?"
