@@ -13,7 +13,7 @@ class TextEmbedder:
         - text: Input text.
 
     Outputs:
-        - List of embeddings.
+        - List of (word, embedding) pairs.
     """
     def __init__(self, language="russian"):
         self._tokenizer = Tokenizer()
@@ -26,9 +26,10 @@ class TextEmbedder:
         return self._embedder.dim
 
     def __call__(self, text):
-        embeddings = []
+        results = []
         for sentence in self._tokenizer(text):
-            embeddings.append(list(filter(lambda word: word is not None, map(self._embedder, sentence))))
+            results.append(list(filter(lambda word_embedding: word_embedding[1] is not None, zip(sentence, map(self._embedder, sentence)))))
             if self._eos_embedding is not None:
-                embeddings.append([self._eos_embedding])
-        return sum(embeddings, [])
+                mark = sentence[-1] if sentence[-1] in [".", "?", "!"] else "."
+                results.append([(mark, self._eos_embedding)])
+        return sum(results, [])
