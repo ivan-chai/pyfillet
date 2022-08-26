@@ -13,6 +13,7 @@ setup(
     install_requires=[
         "gensim>=4.2.0",
         "pymorphy2>=0.9.1",
-        "nltk>=3.7"
+        "nltk>=3.7",
+        "tqdm>=4.64.0"
     ]
 )
