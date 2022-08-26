@@ -17,7 +17,7 @@ text = "Мама мыла раму. Папа сажал забор?"
 
 embedder = TextEmbedder()
 embeddings = embedder(text)
-print(len(embeddings))     # "8", the number of encoded words and sentence endings.
-print(embeddings[0][0])  # "Мама", the first word.
+print(len(embeddings))        # "8", the number of encoded words and sentence endings.
+print(embeddings[0][0])       # "Мама", the first word.
 print(len(embeddings[0][1]))  # "300", embedding dim.
 ```
