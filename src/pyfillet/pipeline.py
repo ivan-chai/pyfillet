@@ -23,7 +23,13 @@ class TextEmbedder:
 
     @property
     def dim(self):
+        """Embedding dimension."""
         return self._embedder.dim
+
+    @property
+    def embeddings(self):
+        """Dictionary of embeddings for the words."""
+        return self._embedder.embeddings
 
     def __call__(self, text):
         results = []

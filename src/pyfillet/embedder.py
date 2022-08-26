@@ -81,7 +81,13 @@ class WordEmbedder:
 
     @property
     def dim(self):
+        """Embedding dimension."""
         return self._model.vector_size
+
+    @property
+    def embeddings(self):
+        """Dictionary of embeddings for the words."""
+        return {key: self._model.get_vector(index) for key, index in self._model.key_to_index.items()}
 
     def __call__(self, word):
         word = word.lower()
