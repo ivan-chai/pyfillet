@@ -23,5 +23,5 @@ class Tokenizer:
     def __call__(self, text):
         sentences = []
         for sentence in nltk.tokenize.sent_tokenize(text, language=self._language):
-            sentences.append(nltk.tokenize.word_tokenize(sentence, language=self._language))
+            sentences.append(list(map(str.lower, nltk.tokenize.word_tokenize(sentence, language=self._language))))
         return sentences
