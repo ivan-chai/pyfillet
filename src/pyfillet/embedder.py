@@ -10,7 +10,7 @@ import pymorphy2
 from .utils import md5, DownloadBar
 
 
-class Embedder:
+class WordEmbedder:
     """Embedder computes embeddings for the words.
 
     Args:
