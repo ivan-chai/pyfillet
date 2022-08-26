@@ -6,7 +6,7 @@ from pyfillet.tokenizer import *
 class TestTokenizer(TestCase):
     def test_simple(self):
         sentences = Tokenizer()("Мама мыла раму. Папа к.м.н. сажал забор?")
-        gt_output = [["Мама", "мыла", "раму", "."], ["Папа", "к.м.н.", "сажал", "забор", "?"]]
+        gt_output = [["мама", "мыла", "раму", "."], ["папа", "к.м.н.", "сажал", "забор", "?"]]
         self.assertEqual(sentences, gt_output)
 
 

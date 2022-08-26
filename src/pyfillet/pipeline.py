@@ -29,7 +29,6 @@ class TextEmbedder:
         results = []
         for sentence in self._tokenizer(text):
             results.append(list(filter(lambda word_embedding: word_embedding[1] is not None, zip(sentence, map(self._embedder, sentence)))))
-            if self._eos_embedding is not None:
-                mark = sentence[-1] if sentence[-1] in [".", "?", "!"] else "."
-                results.append([(mark, self._eos_embedding)])
+            if (sentence[-1] in [".", "?", "!"]) and (self._eos_embedding is not None):
+                results.append([(sentence[-1], self._eos_embedding)])
         return sum(results, [])
