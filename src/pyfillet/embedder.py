@@ -30,6 +30,10 @@ class WordEmbedder:
             "url": ("http://vectors.nlpl.eu/repository/20/180.zip", "aa919ce69a5a12f8d02fe4f2751d67aa"),
             "model": ("model.bin", "8825f9a42305cdcc1af11d3acde53280")
         },
+        "rusvectores-183": {
+            "url": ("http://vectors.nlpl.eu/repository/20/183.zip", "2ad38757eb9175540542f2d05fff689f"),
+            "model": ("model.bin", "a55e5bb47389de2bdf27553aa8a74042")
+        },
         "rusvectores-220": {
             "url": ("http://vectors.nlpl.eu/repository/20/220.zip", "dd315d3e317cecf4826aeb42546d3326"),
             "model": ("model.bin", "2f0eaace5eb2e9ab8f89e994d1f724c3")
@@ -48,7 +52,7 @@ class WordEmbedder:
         "PRTS": "VERB"
     }
 
-    def __init__(self, model="rusvectores-220", root=None, download=True):
+    def __init__(self, model="rusvectores-183", root=None, download=True):
         if root is None:
             cache = os.path.expanduser(os.path.join("~", ".cache"))
             if download and not os.path.isdir(cache):
