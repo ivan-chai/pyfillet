@@ -15,10 +15,13 @@ class DownloadBar:
     """Progress bar hook for URL downloading."""
     def __init__(self):
         self._pbar = tqdm()
+        self._prev_percent = -1
 
     def __call__(self, chunk, max_size, total_size):
         percent = int(100 * min(chunk * max_size / total_size,  1))
-        self._pbar.set_description("Downloaded {}%".format(percent))
+        if percent > self._prev_percent:
+            self._pbar.set_description("Downloaded {}%".format(percent))
+            self._prev_percent = percent
 
     def close(self):
         self._pbar.close()
